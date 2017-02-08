@@ -5,7 +5,9 @@ export const TodoItem = (props) => {
   const handleToggle = partial(props.handleToggle, props.id)
   return(
     <li>
-      <input type="checkbox" onChange={handleToggle} checked={props.isComplete} /> {props.name}
+      <div className="view">
+      <input className="toggle" type="checkbox" onChange={handleToggle} checked={props.isComplete} /> <label>{props.name}</label>
+      </div>
     </li>
   )
 }

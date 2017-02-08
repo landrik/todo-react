@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { TodoForm, TodoList } from './components/todo';
 import { addTodo, generateId, findById, toggleTodo, updateTodo } from './lib/todoHelpers'
@@ -48,29 +47,26 @@ class App extends Component {
   handleEmptySubmit(evt){
     evt.preventDefault()
     this.setState({
-      errorMessage: 'Please supply a todo name'
+      errorMessage: 'Please supply a task name'
     })
   }
 
   render() {
     const submitHandler = this.state.currentTodo ? this.handleSubmit : this.handleEmptySubmit
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>React Todos</h2>
-        </div>
-        <div className="Todo-App">
+      <section id="todoapp" className="App">
+        <header id="header">
           {this.state.errorMessage && <span className="error">{this.state.errorMessage}</span>}
           <TodoForm
-          handleInputChange={this.handleInputChange}
-          currentTodo={this.state.currentTodo}
-          handleSubmit={submitHandler}
+            handleInputChange={this.handleInputChange}
+            currentTodo={this.state.currentTodo}
+            handleSubmit={submitHandler}
           />
+        </header>
+        <div className="Todo-App">
           <TodoList handleToggle={this.handleToggle} todos={this.state.todos}/>
-
         </div>
-      </div>
+      </section>
     );
   }
 }
